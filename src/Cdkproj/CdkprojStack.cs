@@ -18,22 +18,25 @@ namespace Cdkproj
                         ConnectionArn = "arn:aws:codestar-connections:eu-west-1:220659591193:connection/188e1149-5dd5-4854-b70c-313f9cd8dd35",
                         TriggerOnPush = true
                     }),
-                    //Input = CodePipelineSource.GitHub("paul-olofsson/MyTestRepo", "master"),
                     Commands = new string[] { "npm install -g aws-cdk", "cdk synth" }
                 })
             });
 
+            pipeline.AddStage(new MyPipelineAppStage(this, "FirstStage", new StageProps
+            {
+                Env = props.Env
+            }));
         }
     }
-    //
-    // class MyPipelineAppStage : Stage
-    // {
-    //     public MyPipelineAppStage(Construct scope, string id, StageProps props=null) : base(scope, id, props)
-    //     {
-    //         new BucketStack(this, "MyBucketStack", new StackProps
-    //         {
-    //             Env = props.Env
-    //         });
-    //     }
-    // }
+
+    class MyPipelineAppStage : Stage
+    {
+        public MyPipelineAppStage(Construct scope, string id, StageProps props=null) : base(scope, id, props)
+        {
+            new BucketStack(this, "MyBucketStack", new StackProps
+            {
+                Env = props.Env
+            });
+        }
+    }
 }
