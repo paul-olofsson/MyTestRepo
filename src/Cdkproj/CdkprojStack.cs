@@ -22,7 +22,18 @@ namespace Cdkproj
                 })
             });
 
-            pipeline.AddStage(new MyPipelineAppStage(this, "FirstStage", new StageProps
+            var testStage = pipeline.AddStage(new MyPipelineAppStage(this, "Test", new StageProps
+            {
+                Env = props.Env
+            }));
+
+            testStage.AddPost(
+                new ManualApprovalStep("ManualApprovalStep", new ManualApprovalStepProps
+                {
+                    Comment = "Approve to deploy in production"
+                }));
+
+            pipeline.AddStage(new MyPipelineAppStage(this, "Prod", new StageProps
             {
                 Env = props.Env
             }));
@@ -31,7 +42,7 @@ namespace Cdkproj
 
     class MyPipelineAppStage : Stage
     {
-        public MyPipelineAppStage(Construct scope, string id, StageProps props=null) : base(scope, id, props)
+        public MyPipelineAppStage(Construct scope, string id, StageProps props) : base(scope, id, props)
         {
             new BucketStack(this, "MyBucketStack", new StackProps
             {
