@@ -8,11 +8,11 @@ namespace Cdkproj
     {
         internal BucketStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
         {
-            new Bucket(this, "MyTestBucket", new BucketProps
+            new Bucket(this, "MyTestBucket2", new BucketProps
             {
                 Versioned = true,
                 RemovalPolicy = RemovalPolicy.DESTROY,
-                //BucketName = "my-test-bucket-second-attempt"
+                BucketName = "my-test-bucket-second-attempt"
             });
         }
     }
