@@ -15,15 +15,10 @@ namespace Cdkproj
                 PipelineName = "MyPipeline",
                 Synth = new ShellStep("Synth", new ShellStepProps
                 {
-                    Commands = new string[] { "npm install -g aws-cdk" }
+                    Input = CodePipelineSource.GitHub("paul-olofsson/MyTestRepo", "master"),
+                    Commands = new string[] { "npm install -g aws-cdk", "cdk synth" }
                 })
             });
-
-            pipeline.AddStage(new MyPipelineAppStage(this, "FirstStage", new StageProps
-            {
-                Env = props.Env,
-                StageName = "Nisse"
-            }));
 
         }
     }
