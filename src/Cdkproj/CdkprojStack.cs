@@ -34,9 +34,9 @@ namespace Cdkproj
     {
         public MyPipelineAppStage(Construct scope, string id, StageProps props=null) : base(scope, id, props)
         {
-            new Bucket(this, "MyTestBucket", new BucketProps
+            new BucketStack(this, "MyBucketStack", new StackProps
             {
-                Versioned = true, RemovalPolicy = RemovalPolicy.DESTROY
+                Env = props.Env
             });
         }
     }
