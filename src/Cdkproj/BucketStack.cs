@@ -11,7 +11,6 @@ namespace Cdkproj
             new Bucket(this, "MyTestBucket2", new BucketProps
             {
                 Versioned = true,
-                RemovalPolicy = RemovalPolicy.DESTROY,
                 BucketName = "my-test-bucket-second-attempt"
             });
         }
