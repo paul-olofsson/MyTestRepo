@@ -22,15 +22,15 @@ namespace Cdkproj
 
         }
     }
-
-    class MyPipelineAppStage : Stage
-    {
-        public MyPipelineAppStage(Construct scope, string id, StageProps props=null) : base(scope, id, props)
-        {
-            new BucketStack(this, "MyBucketStack", new StackProps
-            {
-                Env = props.Env
-            });
-        }
-    }
+    //
+    // class MyPipelineAppStage : Stage
+    // {
+    //     public MyPipelineAppStage(Construct scope, string id, StageProps props=null) : base(scope, id, props)
+    //     {
+    //         new BucketStack(this, "MyBucketStack", new StackProps
+    //         {
+    //             Env = props.Env
+    //         });
+    //     }
+    // }
 }
