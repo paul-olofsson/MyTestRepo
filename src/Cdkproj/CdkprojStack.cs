@@ -13,7 +13,7 @@ namespace Cdkproj
                 PipelineName = "MyPipeline",
                 Synth = new ShellStep("Synth", new ShellStepProps
                 {
-                    Input = CodePipelineSource.Connection("MyTestRepo", "master", new ConnectionSourceOptions
+                    Input = CodePipelineSource.Connection("paul-olofsson/MyTestRepo", "master", new ConnectionSourceOptions
                     {
                         ConnectionArn = "arn:aws:codestar-connections:eu-west-1:220659591193:connection/188e1149-5dd5-4854-b70c-313f9cd8dd35",
                         TriggerOnPush = true
