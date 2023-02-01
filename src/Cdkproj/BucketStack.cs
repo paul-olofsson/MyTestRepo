@@ -12,7 +12,7 @@ namespace Cdkproj
             {
                 Versioned = true,
                 RemovalPolicy = RemovalPolicy.DESTROY,
-                BucketName = "my-test-bucket"
+                BucketName = "my-test-bucket-second-attempt"
             });
         }
     }
